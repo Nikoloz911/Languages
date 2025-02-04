@@ -1,0 +1,21 @@
+<!-- XML -->
+<!--
+  XML (Extensible Markup Language) is used to store and transport data in a hierarchical format. It is commonly used for configuration files, web services, and document storage.
+-->
+<script>
+  // Example of using XML in JavaScript
+  const xmlString = `<?xml version="1.0"?>
+                     <note>
+                       <to>Tove</to>
+                       <from>Jani</from>
+                       <heading>Reminder</heading>
+                       <body>Don't forget me this weekend!</body>
+                     </note>`;
+
+  const parser = new DOMParser();
+  const xmlDoc = parser.parseFromString(xmlString, "text/xml");
+
+  // Extracting data from XML
+  const to = xmlDoc.getElementsByTagName("to")[0].childNodes[0].nodeValue;
+  console.log(to); // Output: Tove
+</script>

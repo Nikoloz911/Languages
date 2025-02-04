@@ -1,0 +1,14 @@
+<!-- WebAssembly (WASM) -->
+<!--
+  WebAssembly allows you to run compiled code (like C, C++, or Rust) in the browser, providing near-native performance for computationally intensive tasks. 
+  You can load and interact with WebAssembly modules using JavaScript.
+-->
+<!-- <script>
+   Example of using WebAssembly (WASM)
+  fetch('yourModule.wasm').then(response => response.arrayBuffer()).then(bytes => {
+    WebAssembly.instantiate(bytes).then(wasmModule => {
+       Now you can call functions from the WASM module
+      console.log(wasmModule.instance.exports.yourFunction());
+    });
+  });
+</script> -->

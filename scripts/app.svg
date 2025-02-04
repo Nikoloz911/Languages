@@ -1,0 +1,8 @@
+<!-- SVG (Scalable Vector Graphics) -->
+<!--
+  SVG is an XML-based format for vector graphics. It's used to create graphics that can scale to any size without losing quality.
+-->
+<svg width="100" height="100">
+  <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+</svg>
+<!-- This SVG creates a red circle with a black border in a 100x100 container -->
