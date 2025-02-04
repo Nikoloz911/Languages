@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     buttons.forEach(button => {
         button.addEventListener("click", function () {
-            let value: string | null = this.getAttribute("data-value");
+            let value = this.getAttribute("data-value");
             if (!value) return;
 
             if (value === "C") {
@@ -35,19 +35,16 @@ document.addEventListener("DOMContentLoaded", function () {
                     expression = "";
                     isResultDisplayed = false;
                 }
-
                 let lastChar = expression.slice(-1);
-                if (isOperator(lastChar) && isOperator(value)) {
-                    return;
+                if (!isOperator(lastChar) || !isOperator(value)) {
+                    expression += value;
                 }
-                expression += value;
             }
             updateDisplay();
         });
     });
-
     document.addEventListener("keydown", function (event: KeyboardEvent) {
-        let key: string = event.key;
+        const key = event.key;
         if (!isNaN(Number(key)) || ["+", "-", "*", "/", "%", "."].includes(key)) {
             buttons.forEach(button => {
                 if (button.getAttribute("data-value") === key) {

@@ -12,8 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
             resultDisplay.textContent = "= " + eval(expression);
             isResultDisplayed = true;
-        }
-        catch (_a) {
+        } catch {
             resultDisplay.textContent = "Error";
         }
     }
@@ -23,50 +22,42 @@ document.addEventListener("DOMContentLoaded", function () {
     buttons.forEach(button => {
         button.addEventListener("click", function () {
             let value = this.getAttribute("data-value");
-            if (!value)
-                return;
+            if (!value) return;
+
             if (value === "C") {
                 expression = "";
                 resultDisplay.textContent = "";
-            }
-            else if (value === "CE") {
+            } else if (value === "CE") {
                 expression = expression.slice(0, -1);
-            }
-            else if (value === "=") {
+            } else if (value === "=") {
                 evaluateExpression();
-            }
-            else {
+            } else {
                 if (isResultDisplayed && !isOperator(value)) {
                     expression = "";
                     isResultDisplayed = false;
                 }
                 let lastChar = expression.slice(-1);
-                if (isOperator(lastChar) && isOperator(value)) {
-                    return;
+                if (!isOperator(lastChar) || !isOperator(value)) {
+                    expression += value;
                 }
-                expression += value;
             }
             updateDisplay();
         });
     });
     document.addEventListener("keydown", function (event) {
-        var _a, _b, _c;
-        let key = event.key;
+        const key = event.key;
         if (!isNaN(Number(key)) || ["+", "-", "*", "/", "%", "."].includes(key)) {
             buttons.forEach(button => {
                 if (button.getAttribute("data-value") === key) {
                     button.click();
                 }
             });
-        }
-        else if (key === "Enter") {
-            (_a = document.querySelector(".equal")) === null || _a === void 0 ? void 0 : _a.click();
-        }
-        else if (key === "Backspace") {
-            (_b = document.querySelector("button[data-value='CE']")) === null || _b === void 0 ? void 0 : _b.click();
-        }
-        else if (key === "Escape") {
-            (_c = document.querySelector("button[data-value='C']")) === null || _c === void 0 ? void 0 : _c.click();
+        } else if (key === "Enter") {
+            document.querySelector(".equal")?.click();
+        } else if (key === "Backspace") {
+            document.querySelector("button[data-value='CE']")?.click();
+        } else if (key === "Escape") {
+            document.querySelector("button[data-value='C']")?.click();
         }
     });
 });
