@@ -79,3 +79,21 @@ body{
     }
   }
 }
+@media screen and (max-width: 480px) {
+    body{
+        .header{
+            .Languages-container{
+                width: 480px !important;
+            }
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    body{
+        .header{
+            .Languages-container{
+                width: 740px !important;
+            }
+        }
+    }
+}
